@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ExpeditionModule } from './modules/expedition/expedition.module';
 import { UsersModule } from './modules/users/users.module';
+import { ExpeditionModule } from './modules/expedition/expedition.module';
 
 
 @Module({
