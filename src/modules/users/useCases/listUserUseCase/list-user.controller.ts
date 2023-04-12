@@ -11,12 +11,7 @@ export class ListUsersController {
 
   @Get()
   async handle() {
-    await this.email.execute({
-      user: {
-        name: "luan",
-        matricula: "5054"
-      }
-    })
+    await this.email.execute(null)
     return this.listUserService.execute();
   }
 
