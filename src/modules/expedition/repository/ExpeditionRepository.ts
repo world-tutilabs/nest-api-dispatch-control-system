@@ -1,3 +1,3 @@
-abstract class ExpedtitionRepository{
+export abstract class ExpedtitionRepository{
   abstract list()
 }
