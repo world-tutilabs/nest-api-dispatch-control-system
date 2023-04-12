@@ -13,7 +13,7 @@ export class SendEmailAlertDivergence {
         context: {
           name: user.name,
           matricula: user.matricula,
-          locals: [
+          pessoas: [
             {
                 nome: 'Paulo',
                 idade: 12
