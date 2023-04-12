@@ -24,7 +24,7 @@ import { SendEmailAlertDivergence } from './services/sendEmailAlertDivergence.se
                 dir: process.cwd() + '/src/modules/mail/templates',
                 adapter: new EjsAdapter(),
                 options: {
-                  strict: true,
+                  strict: false,
                 },
               },
             }),
