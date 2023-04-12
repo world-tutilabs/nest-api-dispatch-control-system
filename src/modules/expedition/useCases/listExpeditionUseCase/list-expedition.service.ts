@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class ListExpeditionService {
+  constructor(private readonly expeditionRepository: ExpedtitionRepository){}
   async execute(){
     const exp = [
       {
@@ -18,11 +19,13 @@ export class ListExpeditionService {
           id: '12',
           id_exp: '1',
           codigo: 'TUTILABS-0001',
+          quantidade: 5,
         },
         {
           id: '13',
           id_exp: '1',
           codigo: 'TUTILABS-0002',
+          quantidade: 5,
         }
         ]
       }
