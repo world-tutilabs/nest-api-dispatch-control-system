@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { ListExpeditionDTO } from '../../dto/list-expedition.dto';
+import { ExpedtitionRepository } from '../../repository/ExpeditionRepository';
 
 @Injectable()
 export class ListExpeditionService {
   constructor(private readonly expeditionRepository: ExpedtitionRepository){}
-  async execute(){
+  async execute({cliente,nf,produto}: ListExpeditionDTO, limit = 0, offset = 0){
     const exp = [
       {
         id: '1', 
@@ -30,6 +32,6 @@ export class ListExpeditionService {
         ]
       }
     ]
-    return exp
+    return exp.find((item)=>  nf == item.nf)
   }
 }
