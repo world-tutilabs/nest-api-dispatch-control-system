@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ExpeditionService } from './expedition.service';
-import { ExpeditionController } from './expedition.controller';
+import { ListExpeditionController } from './useCases/listExpeditionUseCase/list-expedition.controller';
+import { ListExpeditionService } from './useCases/listExpeditionUseCase/list-expedition.service';
 
 @Module({
-  controllers: [ExpeditionController],
-  providers: [ExpeditionService]
+  controllers: [ListExpeditionController],
+  providers: [ ListExpeditionService]
 })
 export class ExpeditionModule {}

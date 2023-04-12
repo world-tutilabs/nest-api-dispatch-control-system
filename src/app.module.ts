@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
-import { UsersModule } from './modules/users/users.module';
-import { ExpeditionModule } from './modules/expedition/expedition.module';
 import { ConfigModule } from '@nestjs/config';
+import { IndexModule } from './modules/index.modules';
 
 
 @Module({
-  imports: [UsersModule, ExpeditionModule, ConfigModule.forRoot({ isGlobal: true })],
+  imports: [IndexModule, ConfigModule.forRoot({ isGlobal: true })],
   controllers: [],
   providers: [],
 })
