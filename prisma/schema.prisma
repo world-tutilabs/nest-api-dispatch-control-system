@@ -54,7 +54,7 @@ model truck {
 
 model user {
   id         String       @id @default(uuid())
-  register   String
+  register   String       @unique
   password   String
   name       String
   is_enabled Boolean      @default(true)
