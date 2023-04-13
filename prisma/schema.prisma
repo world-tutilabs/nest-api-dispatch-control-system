@@ -52,7 +52,7 @@ model truck {
 
 model user {
   id_user  String @id @db.Uuid
-  register String @db.VarChar
+  register String @db.VarChar @unique
   password String @db.VarChar
   name     String @db.VarChar
   id_role  String @db.Uuid
