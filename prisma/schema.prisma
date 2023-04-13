@@ -8,54 +8,57 @@ datasource db {
 }
 
 model cart {
-  id_cart       String     @id @db.Uuid
-  id_expedition String     @db.Uuid
+  id            String     @id @default(uuid())
   amount        Int
-  code          String     @db.VarChar
-  expedition    expedition @relation(fields: [id_expedition], references: [id_expedition], onDelete: Cascade, onUpdate: Cascade)
+  code          String
+  fk_expedition String
+  expedition    expedition @relation(fields: [fk_expedition], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model expedition {
-  id_expedition       String  @id @db.Uuid
+  id                  String  @id @default(uuid())
   amount              Int?
-  id_status           String  @db.Uuid
-  nf                  String? @db.VarChar
-  barcode             String? @db.VarChar
-  id_truck            String  @db.Uuid
-  description_product String? @db.VarChar
-  code_product        String? @db.VarChar
-  observation         String? @db.VarChar
-  client              String? @db.VarChar
-  status              status  @relation(fields: [id_status], references: [id_status], onDelete: Cascade, onUpdate: Cascade, map: "FK_expedition_status")
-  truck               truck  @relation(fields: [id_truck], references: [id_truck], onDelete: Cascade, onUpdate: Cascade)
+  nf                  String?
+  barcode             String?
+  description_product String?
+  code_product        String?
+  observation         String?
+  client              String?
+  fk_status           String
+  fk_truck            String
+  fk_user             String
+  user                user    @relation(fields: [fk_user], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  status              status  @relation(fields: [fk_status], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  truck               truck   @relation(fields: [fk_truck], references: [id], onDelete: Cascade, onUpdate: Cascade)
   cart                cart[]
 }
 
 model role {
-  id_role     String @id @db.Uuid
-  description String @db.VarChar
-  user    user[]
+  id          String @id @default(uuid())
+  description String
+  user        user[]
 }
 
 model status {
-  id_status   String       @id @db.Uuid
+  id          String       @id @default(uuid())
   description String?      @db.VarChar
   expedition  expedition[]
 }
 
 model truck {
-  id_truck    String @id @db.Uuid
-  description String @db.VarChar
-  code        String @db.VarChar
-   expedition  expedition[]
+  id          String       @id @default(uuid())
+  description String       @db.VarChar
+  code        String       @db.VarChar
+  expedition  expedition[]
 }
 
 model user {
-  id_user  String @id @db.Uuid
-  register String @db.VarChar
-  password String @db.VarChar
-  name     String @db.VarChar
-  id_role  String @db.Uuid
-  role     role  @relation(fields: [id_role], references: [id_role], onDelete: Cascade, onUpdate: Cascade)
-
+  id         String       @id @default(uuid())
+  register   String
+  password   String
+  name       String
+  is_enabled Boolean      @default(true)
+  fk_role    String
+  role       role         @relation(fields: [fk_role], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  expedition expedition[]
 }
