@@ -8,6 +8,7 @@ export class UserRepositoryInPrisma implements UserRepository{
     constructor(private prisma: PrismaService){}
     async findByRegister(register: string): Promise<User>{
         const data = await this.prisma.user.findUnique({
+           
             where: {
                 register
             }

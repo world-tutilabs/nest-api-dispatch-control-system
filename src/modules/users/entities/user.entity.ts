@@ -1,7 +1,8 @@
 export class User {
-    id_user: string;
+    id: string;
     register: string;
     password: string;
     name: string;
-    id_role: string;
+    is_enabled: boolean;
+    fk_role: string;
 }
