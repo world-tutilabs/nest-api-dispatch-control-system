@@ -1,17 +1,17 @@
-import { IsInt, IsString, ValidateIf } from "class-validator";
+import { IsString, ValidateIf } from "class-validator";
 
 export class ListExpeditionDTO{
-  @IsInt({message: 'Nota fiscal deve ser um inteiro'})
+  @IsString({message: 'Nota fiscal deve ser uma string'})
   @ValidateIf((object, value) => value != null)
-  nf?: number;
+  nf?: string;
 
   @IsString({message: 'Produto deve ser uma string'})
   @ValidateIf((object, value) => value != null)
-  produto?: string;
+  description_product?: string;
 
   @IsString({message: 'Cliente deve ser uma string'})
   @ValidateIf((object, value) => value != null)
-  cliente?: string;
+  client?: string;
 
   @IsString({message: 'Id do status deve ser uma string'})
   @ValidateIf((object, value) => value != null)
