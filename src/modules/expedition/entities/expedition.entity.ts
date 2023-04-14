@@ -2,17 +2,17 @@ import { ApiProperty } from "@nestjs/swagger";
 
 export class Expedition {
     @ApiProperty()
-    id_expedition: string;
+    id: string;
     @ApiProperty()
     amount: number;
     @ApiProperty()
-    id_status: string;
+    fk_status: string;
     @ApiProperty()
     nf: string;
     @ApiProperty()
     barcode: string;
     @ApiProperty()
-    id_truck: string;
+    fk_truck: string;
     @ApiProperty()
     description_product: string;
     @ApiProperty()
@@ -21,4 +21,6 @@ export class Expedition {
     observation: string;
     @ApiProperty()
     client: string;
+    @ApiProperty()
+    fk_user: string;
 }
