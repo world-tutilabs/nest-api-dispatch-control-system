@@ -1,4 +1,4 @@
-import { IsInt, IsString, ValidateIf } from "class-validator";
+import { IsInt, IsString, ValidateIf } from "class-validator";  
 
 export class ListExpeditionDTO{
   @IsInt({message: 'Nota fiscal deve ser um inteiro'})
