@@ -1,7 +1,9 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsString, ValidateIf } from "class-validator";
 
 export class UpdateExpeditionDto {
 
+    @ApiProperty()
     @IsString({message: 'Código do caminhão precisa ser uma string'})
     @IsNotEmpty({message: 'Código do caminhão não pode ser enviado vazio'})
     truck_code?: string;
