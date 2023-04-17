@@ -48,7 +48,7 @@ model status {
 model truck {
   id          String       @id @default(uuid())
   description String       @db.VarChar
-  code        String       @db.VarChar
+  code        String       @db.VarChar @unique()
   expedition  expedition[]
 }
 
