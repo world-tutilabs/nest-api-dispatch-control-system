@@ -20,6 +20,7 @@ export class ExpeditionRepositoryInPrisma implements ExpedtitionRepository {
       barcode,
       truck,
       cart,
+      user,
     } = createExpeditionDto;
     await this.prisma.expedition.create({
       data: {
@@ -43,7 +44,7 @@ export class ExpeditionRepositoryInPrisma implements ExpedtitionRepository {
         },
         user: {
           connect: {
-            id: '1',
+            id: user.id,
           },
         },
         status: {

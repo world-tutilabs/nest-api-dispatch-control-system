@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Query } from '@nestjs/common';
+import { Body, Controller, Post, Query } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { ListExpeditionDTO } from '../../dto/list-expedition.dto';
 import { Expedition } from '../../entities/expedition.entity';
@@ -21,7 +21,7 @@ export class FilterExpeditionController {
     required: false,
     type: Number,
   })
-  @Get('filter')
+  @Post('filter')
   filter(@Body() listExpeditionDTO: ListExpeditionDTO, @Query() {limit, offset}){
     return this.filterExpeditionService.execute(listExpeditionDTO,Number(limit),Number(offset))
   }
