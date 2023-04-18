@@ -28,4 +28,5 @@ export class CreateExpeditionDto {
   cart: Cart[];
   truck: Truck;
   status: Status;
+  user: any;
 }
