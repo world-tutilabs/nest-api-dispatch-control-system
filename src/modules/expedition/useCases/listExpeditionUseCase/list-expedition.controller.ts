@@ -22,6 +22,8 @@ export class ListExpeditionController {
     })      
     @Get()
     list(@Query() {limit, offset}){
-    return this.listExpeditionServicer.execute(limit, offset)
+
+    return this.listExpeditionServicer.execute(limit,offset)
+
   }
 }

@@ -6,13 +6,20 @@ import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 @ApiTags('login')
 @Controller('login')
 export class AuthController {
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService) {}
 
   @UseGuards(LocalAuthGuard)
-  @ApiOperation({summary: "Login"})
-  @ApiBody({ schema: { properties: { register: { type: 'string', description: "Matrícula do usuario" }, password: { type: 'string', description: "Senha do usuario" } } } })  
+  @ApiOperation({ summary: 'Login' })
+  @ApiBody({
+    schema: {
+      properties: {
+        register: { type: 'string', description: 'Matrícula do usuario' },
+        password: { type: 'string', description: 'Senha do usuario' },
+      },
+    },
+  })
   @Post()
   login(@Request() req) {
-    return this.authService.login(req.user)
+    return this.authService.login(req.user);
   }
 }

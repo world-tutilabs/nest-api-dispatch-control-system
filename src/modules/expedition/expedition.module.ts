@@ -5,9 +5,11 @@ import { ListExpeditionController } from './useCases/listExpeditionUseCase/list-
 import { ListExpeditionService } from './useCases/listExpeditionUseCase/list-expedition.service';
 import { UpdateStatusAndTruckController } from './useCases/updateStatusAndTruckUseCase/updateStatusAndTruck.controller';
 import { UpdateStatusAndTruckService } from './useCases/updateStatusAndTruckUseCase/updateStatusAndTruck.service';
+import { CreateExpeditionController } from './useCases/createExpeditionUseCase/create-expedition.controller';
+import { CreateExpeditionService } from './useCases/createExpeditionUseCase/create-expedition.service';
 
 @Module({
-  controllers: [FilterExpeditionController, ListExpeditionController, UpdateStatusAndTruckController],
-  providers: [ FilterExpeditionService, ListExpeditionService, UpdateStatusAndTruckService]
+  controllers: [FilterExpeditionController, ListExpeditionController, UpdateStatusAndTruckController,CreateExpeditionController],
+  providers: [ FilterExpeditionService, ListExpeditionService, UpdateStatusAndTruckService, CreateExpeditionService]
 })
 export class ExpeditionModule {}
