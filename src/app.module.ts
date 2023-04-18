@@ -9,7 +9,7 @@ import { LogsModule } from './modules/logs/logs.module';
   imports: [
     IndexModule, 
     ConfigModule.forRoot({ isGlobal: true }), 
-    MongooseModule.forRoot("mongodb://127.0.0.1:27017", {
+    MongooseModule.forRoot("mongodb://mongo_sce", {
       auth:{
         username: "root",
         password: "teste"
