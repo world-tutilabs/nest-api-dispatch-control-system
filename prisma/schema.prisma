@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model cart {
+  id            String     @id @default(uuid())
+  amount        Int
+  code          String
+  fk_expedition String
+  expedition    expedition @relation(fields: [fk_expedition], references: [id], onDelete: Cascade)
+}
+
+model expedition {
+  id                  String  @id @default(uuid())
+  amount              Int?
+  nf                  String?
+  barcode             String?
+  description_product String?
+  code_product        String?
+  observation         String?
+  client              String?
+  fk_status           String
+  fk_truck            String?
+  fk_user             String
+  cart                cart[]
+  status              status  @relation(fields: [fk_status], references: [id], onDelete: Cascade)
+  truck               truck?  @relation(fields: [fk_truck], references: [id], onDelete: Cascade)
+  user                user    @relation(fields: [fk_user], references: [id], onDelete: Cascade)
+}
+
+model role {
+  id          String @id @default(uuid())
+  description String
+  user        user[]
+}
+
+model status {
+  id          String       @id @default(uuid())
+  description String?      @db.VarChar
+  expedition  expedition[]
+}
+
+model truck {
+  id          String       @id @default(uuid())
+  description String       @db.VarChar
+  code        String       @db.VarChar @unique()
+  expedition  expedition[]
+}
+
+model user {
+  id         String       @id @default(uuid())
+  register   String       @unique
+  password   String
+  name       String
+  is_enabled Boolean      @default(true)
+  fk_role    String
+  expedition expedition[]
+  role       role         @relation(fields: [fk_role], references: [id], onDelete: Cascade)
+}
