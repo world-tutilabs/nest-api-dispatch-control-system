@@ -16,11 +16,13 @@ export class AuthService {
     password: string,
   ): Promise<Omit<User, 'password'>> {
     const user = await this.userRepository.findByRegister(register);
-    const passwordMatch = bcrypt.compare(password, user.password);
 
-    if (user && passwordMatch) {
-      const { password, ...result } = user;
-      return result;
+    if (user) {
+      const passwordMatch = await bcrypt.compare(password, user.password);
+      if (passwordMatch) {
+        const { password, ...result } = user;
+        return result;
+      }
     }
     return null;
   }

@@ -1,5 +1,6 @@
 import { IsInt, IsString, ValidateIf } from 'class-validator';
-import { Cart, Truck, Status } from '../entities/expedition.entity';
+import { Cart, Status } from '../entities/expedition.entity';
+import { Truck } from 'src/modules/truck/entities/truck.entity';
 
 export class CreateExpeditionDto {
   id: string;

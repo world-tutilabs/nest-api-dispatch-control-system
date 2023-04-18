@@ -1,8 +1,8 @@
-import { use } from 'passport';
 import { CreateExpeditionDto } from './../../dto/create-expedition.dto';
 import { CreateExpeditionService } from './create-expedition.service';
-import { Controller, Post, Body } from '@nestjs/common';
-
+import { Controller, Post, Body, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth.guard';
+@UseGuards(JwtAuthGuard)
 @Controller('expedition')
 export class CreateExpeditionController {
   constructor(
