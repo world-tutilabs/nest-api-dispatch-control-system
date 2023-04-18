@@ -1,19 +1,19 @@
-import { IsInt, IsString, ValidateIf } from "class-validator";
+import { IsInt, IsString, ValidateIf } from "class-validator";  
+import { ApiProperty } from "@nestjs/swagger";
 
 export class ListExpeditionDTO{
-  @IsInt({message: 'Nota fiscal deve ser um inteiro'})
+  @ApiProperty()
+  @IsString({message: 'Nota fiscal deve ser uma string'})
   @ValidateIf((object, value) => value != null)
-  nf?: number;
+  nf?: string;
 
+  @ApiProperty()
   @IsString({message: 'Produto deve ser uma string'})
   @ValidateIf((object, value) => value != null)
-  produto?: string;
+  description_product?: string;
 
+  @ApiProperty()
   @IsString({message: 'Cliente deve ser uma string'})
   @ValidateIf((object, value) => value != null)
-  cliente?: string;
-
-  @IsString({message: 'Id do status deve ser uma string'})
-  @ValidateIf((object, value) => value != null)
-  id_status?: string;
+  client?: string;
 }
