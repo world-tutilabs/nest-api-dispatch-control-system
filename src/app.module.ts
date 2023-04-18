@@ -3,7 +3,6 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { IndexModule } from './modules/index.modules';
 import { LogsModule } from './modules/logs/logs.module';
-// import { LogsModule } from './modules/logs/logs.module';
 
 
 @Module({

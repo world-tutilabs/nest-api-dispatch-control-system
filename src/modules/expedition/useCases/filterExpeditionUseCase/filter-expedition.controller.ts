@@ -23,6 +23,6 @@ export class FilterExpeditionController {
   })
   @Post('filter')
   filter(@Body() listExpeditionDTO: ListExpeditionDTO, @Query() {limit, offset}){
-    return this.filterExpeditionService.execute(listExpeditionDTO,Number(limit),Number(offset))
+    return this.filterExpeditionService.execute(listExpeditionDTO, limit, offset)
   }
 }

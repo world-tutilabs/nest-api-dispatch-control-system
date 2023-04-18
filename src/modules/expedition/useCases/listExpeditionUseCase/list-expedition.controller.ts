@@ -19,9 +19,11 @@ export class ListExpeditionController {
       name: 'offset',
       required: false,
       type: Number,
-    })
+    })      
     @Get()
     list(@Query() {limit, offset}){
+
     return this.listExpeditionServicer.execute(limit,offset)
+
   }
 }
