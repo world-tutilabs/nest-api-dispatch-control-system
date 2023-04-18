@@ -3,14 +3,13 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from "@nestjs/mongoose"
 import { IndexModule } from './modules/index.modules';
 import { LogsModule } from './modules/logs/logs.module';
-// import { LogsModule } from './modules/logs/logs.module';
 
 
 @Module({
   imports: [
     IndexModule, 
     ConfigModule.forRoot({ isGlobal: true }), 
-    MongooseModule.forRoot("mongodb://127.0.0.1:27017", {
+    MongooseModule.forRoot("mongodb://mongo_sce", {
       auth:{
         username: "root",
         password: "teste"
