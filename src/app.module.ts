@@ -9,13 +9,13 @@ import { IndexModule } from './modules/index.modules';
   imports: [
     IndexModule, 
     ConfigModule.forRoot({ isGlobal: true }), 
-    MongooseModule.forRoot("mongodb://mongo_sce", {
-      auth:{
-        username: "root",
-        password: "teste"
-      },
-      dbName: "logs_sce"
-    }),
+    // MongooseModule.forRoot("mongodb://mongo_sce", {
+    //   auth:{
+    //     username: "root",
+    //     password: "teste"
+    //   },
+    //   dbName: "logs_sce"
+    // }),
     // LogsModule
   ],
   controllers: [],
