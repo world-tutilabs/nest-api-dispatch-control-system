@@ -6,11 +6,14 @@ import { JwtModule } from '@nestjs/jwt';
 import { AuthController } from './useCases/auth.controller';
 
 @Module({
-  imports: [ PassportModule, JwtModule.register({
-    signOptions: { expiresIn: '60s' },
-  })],
+  imports: [
+    PassportModule,
+    JwtModule.register({
+      signOptions: { expiresIn: '60s' },
+    }),
+  ],
   controllers: [AuthController],
   providers: [AuthService, LocalStrategy],
-  exports: [AuthService]
+  exports: [AuthService],
 })
 export class AuthModule {}

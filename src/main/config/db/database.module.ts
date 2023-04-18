@@ -7,8 +7,11 @@ import { PrismaService } from './prisma/prisma.service';
 
 @Global()
 @Module({
-  providers: [PrismaService,{provide: ExpedtitionRepository, useClass: ExpeditionRepositoryInPrisma}, {provide: UserRepository
-  , useClass: UserRepositoryInPrisma}],
-  exports: [ExpedtitionRepository, UserRepository]
+  providers: [
+    PrismaService,
+    { provide: ExpedtitionRepository, useClass: ExpeditionRepositoryInPrisma },
+    { provide: UserRepository, useClass: UserRepositoryInPrisma },
+  ],
+  exports: [ExpedtitionRepository, UserRepository],
 })
 export class DatabaseModule {}
