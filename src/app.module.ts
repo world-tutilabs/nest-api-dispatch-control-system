@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from "@nestjs/mongoose"
-import { IndexModule } from './modules/index.modules';
-import { LogsModule } from './modules/logs/logs.module';
+import { IndexModule } from './modules/index.modules.ts';
+import { LogsModule } from './modules/logs/logs.module.ts';
 
 
 @Module({
