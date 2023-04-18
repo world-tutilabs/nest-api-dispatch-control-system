@@ -5,6 +5,7 @@ services:
     container_name: 'nest_api_dispach_control_system'
     depends_on:
       - database_sce
+      - mongo_sce
     build: .
     command: "yarn prod"
     env_file:
