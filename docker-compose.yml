@@ -32,11 +32,9 @@ services:
     networks:
       - nw_api_sce
 
-  redis:
-    container_name: cache
+  redis_sce:
+    container_name: redis_sce
     image: redis
-    ports:
-      - 6379:6379
     volumes:
       - redis:/data
     networks: 
