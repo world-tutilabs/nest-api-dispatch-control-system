@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards } from '@nestjs/common';
 
 import {
   ApiBearerAuth,
@@ -9,8 +9,11 @@ import {
 } from '@nestjs/swagger';
 import { SendEmailAlertDivergenceService } from '../services/sendEmailAlertDivergence.service';
 import { ISendMailAlertDivergenceDTO } from '../dto/ISendMailAlertDivergenceDTO';
+import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth.guard';
 
 @ApiTags("Mail")
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 @Controller('mail')
 export class SendEmailAlertDivergenceController {
   constructor(private readonly sendEmailAlertDivergenceService: SendEmailAlertDivergenceService) {}
