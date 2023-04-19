@@ -15,6 +15,8 @@ module.exports = {
     jest: true,
   },
   ignorePatterns: ['.eslintrc.js'],
+  //?  *** Solution for the lint errors *** ?//
+  //TODO:
   rules: {
     'prettier/prettier': [
       'error',

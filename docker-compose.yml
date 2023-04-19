@@ -1,20 +1,21 @@
 version: '3'
 
 services:
-  # nest_api_dispach_control_system:
-  #   container_name: 'nest_api_dispach_control_system'
-  #   depends_on:
-  #     - database_sce
-  #   build: .
-  #   command: "yarn start:dev"
-  #   env_file:
-  #     - .env
-  #   ports:
-  #     - ${API_PORT}:${API_PORT}
-  #   volumes:
-  #     - .:/usr/api
-  #   networks:
-  #    - nw_api_sce
+  nest_api_dispach_control_system:
+    container_name: 'nest_api_dispach_control_system'
+    depends_on:
+      - database_sce
+      - mongo_sce
+    build: .
+    command: "yarn prod"
+    env_file:
+      - .env
+    ports:
+      - ${API_PORT}:${API_PORT}
+    volumes:
+      - .:/usr/api
+    networks:
+     - nw_api_sce
 
   database_sce:
     container_name: 'database_sce'
@@ -29,19 +30,19 @@ services:
       - ${PORT_DATABASE}:5432
     restart: unless-stopped
     networks:
-      - nw_api_sce
-  # mongo_sce:
-  #   container_name: mongo_sce
-  #   image: mongo:latest
-  #   environment:
-  #     - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
-  #     - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
-  #     - MONGO_INITDB_DATABASE=${MONGO_DATABASE}
-  #   ports:
-  #     - ${MONGO_PORT}:27017
-  #   volumes:
-  #     - mongodb_data_container:/data/db
-
+     - nw_api_sce
+  mongo_sce:
+   container_name: mongo_sce
+   image: mongo:4.4.6
+   environment:
+    - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+    - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+    - MONGO_INITDB_DATABASE=${MONGO_DATABASE}
+   ports:
+      - 27017:27017
+   volumes:
+     - mongodb_data_container:/data/db
+     
 volumes:
   # mongodb_data_container:
   postgres_data:
