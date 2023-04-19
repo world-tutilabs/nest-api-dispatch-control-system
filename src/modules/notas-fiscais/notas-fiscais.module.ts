@@ -15,10 +15,11 @@ import { ThrottlerGuard } from '@nestjs/throttler';
   controllers: [NotasFiscaisController],
   providers: [
     NotasFiscaisService,
-    // {
-    //   provide: APP_GUARD,
-    //   useClass: ThrottlerGuard,
-    // },
+
+//     {
+//       provide: APP_GUARD,
+//       useClass: ThrottlerGuard,
+//     },
   ],
 })
 export class NotasFiscaisModule {}
