@@ -1,11 +1,12 @@
 import { Controller, Get, Query, UseGuards } from '@nestjs/common';
 import { ListExpeditionService } from './list-expedition.service';
-import { ApiOkResponse, ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse, ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Expedition } from '../../entities/expedition.entity';
 import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth.guard'
 
 @UseGuards(JwtAuthGuard)
-@ApiTags('expedition')
+@ApiTags('Expedition')
+@ApiBearerAuth()
 @Controller('expedition')
 export class ListExpeditionController {
   constructor(private readonly listExpeditionServicer: ListExpeditionService){}
@@ -23,6 +24,7 @@ export class ListExpeditionController {
       type: Number,
     })      
     @Get()
+  @ApiOperation({summary: "Listar expedições - Não disponiveis"})
     list(@Query() {limit, offset}){
 
     return this.listExpeditionServicer.execute(limit,offset)

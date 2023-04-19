@@ -1,10 +1,11 @@
 import { Body, Controller, Post, Query } from '@nestjs/common';
-import { ApiOkResponse, ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse, ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { ListExpeditionDTO } from '../../dto/list-expedition.dto';
 import { Expedition } from '../../entities/expedition.entity';
 import { FilterExpeditionService } from './filter-expedition.service';
 
-@ApiTags('expedition')
+@ApiTags('Expedition')
+@ApiBearerAuth()
 @Controller('expedition')
 export class FilterExpeditionController {
   constructor(private readonly filterExpeditionService: FilterExpeditionService){}
@@ -22,6 +23,7 @@ export class FilterExpeditionController {
     type: Number,
   })
   @Post('filter')
+  @ApiOperation({summary: "Listar expedições com filtro - Não disponiveis"})
   filter(@Body() listExpeditionDTO: ListExpeditionDTO, @Query() {limit, offset}){
     return this.filterExpeditionService.execute(listExpeditionDTO,limit,offset)
   }
