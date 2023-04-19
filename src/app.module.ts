@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { IndexModule } from './modules/index.modules';
 import { HttpModule } from '@nestjs/axios';
+import { LogsModule } from './modules/logs/logs.module';
 
 import { CacheModule } from '@nestjs/cache-manager';
 import type { RedisClientOptions } from 'redis';
@@ -13,9 +14,6 @@ import { ThrottlerModule } from '@nestjs/throttler';
   imports: [
     IndexModule,
     ConfigModule.forRoot({ isGlobal: true }),
-    // MongooseModule.forRoot(
-    //   'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1',
-    // ),
     HttpModule,
     NotasFiscaisModule,
     //* Redis Config
@@ -35,6 +33,14 @@ import { ThrottlerModule } from '@nestjs/throttler';
       ttl: 60,
       limit: 10,
     }),
+    MongooseModule.forRoot("mongodb://185.209.179.253:27017", {
+      auth:{
+        username: "root",
+        password: "teste"
+      },
+      dbName: "logs_sce"
+    }),
+    LogsModule
   ],
   controllers: [],
   providers: [],

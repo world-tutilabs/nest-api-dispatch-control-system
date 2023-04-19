@@ -1,5 +1,5 @@
+import { IsInt, IsString, ValidateIf } from "class-validator";  
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, ValidateIf } from "class-validator";
 
 export class ListExpeditionDTO{
   @ApiProperty()

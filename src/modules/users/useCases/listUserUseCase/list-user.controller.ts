@@ -1,7 +1,10 @@
 import { Controller, Get } from '@nestjs/common';
 import { ListUserService } from './list-user.service';
-import { SendEmailAlertDivergence } from 'src/modules/mail/services/sendEmailAlertDivergence.service';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
+// import { SendEmailAlertDivergenceService } from 'src/modules/mail/services/sendEmailAlertDivergence.service';
+import {
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { User } from '../../entities/user.entity';
 
 @ApiTags('Users')
@@ -9,8 +12,8 @@ import { User } from '../../entities/user.entity';
 export class ListUsersController {
   constructor(
     private readonly listUserService: ListUserService,
-    private readonly email: SendEmailAlertDivergence,
-  ) {}
+    // private readonly email: SendEmailAlertDivergenceService
+    ) {}
 
   @Get()
   @ApiResponse({
@@ -19,7 +22,6 @@ export class ListUsersController {
     type: User,
   })
   async handle() {
-    await this.email.execute(null);
     return this.listUserService.execute();
   }
 }

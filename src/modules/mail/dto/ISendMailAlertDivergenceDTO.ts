@@ -1,28 +1,95 @@
-interface ISendMailAlertDivergenceDTO{
-   user: {
-     name: string,
-     registration: string
-   }
+import { ApiProperty } from "@nestjs/swagger";
 
-   inforGeneral: {
+export class ISendMailAlertDivergenceDTO {
+  @ApiProperty({
+    type: 'object',
+    properties: {
+      name: {
+        type: "string"
+      },
+      registration: {
+        type: "string"
+      },
+    }
+  })
+  @ApiProperty()
+  user: {
+    name: string,
+    registration: string
+  }
+
+  @ApiProperty({
+    type: 'object',
+    properties: {
+      client: {
+        type: "string"
+      },
+      desc_product: {
+        type: "string"
+      },
+      registration: {
+        type: "string"
+      },
+      invoice: {
+        type: "string"
+      },
+      cnpj: {
+        type: "string"
+      },
+      cod_product: {
+        type: "string"
+      },
+    }
+  })
+  inforGeneral: {
     client: string,
     desc_product: string,
     invoice: string,
     cnpj: string,
     cod_product: string,
-   }
+  }
 
-   summary:{
+  @ApiProperty({
+    type: 'object',
+    properties: {
+      total_in_invoice: {
+        type: "number"
+      },
+      total_scanned: {
+        type: "number"
+      },
+      observation: {
+        type: "string"
+      }
+    }
+  })
+  summary: {
     total_in_invoice: number,
     total_scanned: number,
     observation: string,
-   }
+  }
 
-   detailing: {
+  @ApiProperty({
+    type: 'array',
+    items: {
+      properties: {
+        serial_number: {
+          type: "string"
+        },
+        qtd_product: {
+          type: "number"
+        },
+        date_scanned: {
+          type: "Date"
+        }
+      }
+    }
+  })
+  detailing: {
     serial_number: string,
     qtd_product: number,
     date_scanned: Date,
-   }[]
+  }[]
 
 
 }

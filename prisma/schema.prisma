@@ -12,7 +12,7 @@ model cart {
   amount        Int
   code          String
   fk_expedition String
-  expedition    expedition @relation(fields: [fk_expedition], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  expedition    expedition @relation(fields: [fk_expedition], references: [id], onDelete: Cascade)
 }
 
 model expedition {
@@ -25,12 +25,12 @@ model expedition {
   observation         String?
   client              String?
   fk_status           String
-  fk_truck            String
+  fk_truck            String?
   fk_user             String
-  user                user    @relation(fields: [fk_user], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  status              status  @relation(fields: [fk_status], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  truck               truck   @relation(fields: [fk_truck], references: [id], onDelete: Cascade, onUpdate: Cascade)
   cart                cart[]
+  status              status  @relation(fields: [fk_status], references: [id], onDelete: Cascade)
+  truck               truck?  @relation(fields: [fk_truck], references: [id], onDelete: Cascade)
+  user                user    @relation(fields: [fk_user], references: [id], onDelete: Cascade)
 }
 
 model role {
@@ -48,7 +48,7 @@ model status {
 model truck {
   id          String       @id @default(uuid())
   description String       @db.VarChar
-  code        String       @db.VarChar
+  code        String       @db.VarChar @unique()
   expedition  expedition[]
 }
 
@@ -59,6 +59,6 @@ model user {
   name       String
   is_enabled Boolean      @default(true)
   fk_role    String
-  role       role         @relation(fields: [fk_role], references: [id], onDelete: Cascade, onUpdate: Cascade)
   expedition expedition[]
+  role       role         @relation(fields: [fk_role], references: [id], onDelete: Cascade)
 }

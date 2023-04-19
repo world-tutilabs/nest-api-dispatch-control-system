@@ -7,11 +7,14 @@ import { AuthController } from './useCases/auth.controller';
 import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
-  imports: [ PassportModule, JwtModule.register({
-    signOptions: { expiresIn: '8h' },
-  })],
+  imports: [
+    PassportModule,
+    JwtModule.register({
+      signOptions: { expiresIn: '8h' },
+    }),
+  ],
   controllers: [AuthController],
   providers: [AuthService, LocalStrategy, JwtStrategy],
-  exports: [AuthService]
+  exports: [AuthService],
 })
 export class AuthModule {}
