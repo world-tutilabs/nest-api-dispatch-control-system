@@ -1,9 +1,10 @@
 import { Body, Controller, Param, Put } from "@nestjs/common";
 import { UpdateExpeditionDto } from "../../dto/update-expedition.dto";
 import { UpdateStatusAndTruckService } from "./updateStatusAndTruck.service";
-import { ApiBody, ApiOperation, ApiParam, ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiParam, ApiTags } from "@nestjs/swagger";
 
-@ApiTags('expedition')
+@ApiTags('Expedition')
+@ApiBearerAuth()
 @Controller('expedition')
 export class UpdateStatusAndTruckController{
     constructor(private updateStatusAndTruckService: UpdateStatusAndTruckService){}

@@ -1,18 +1,22 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
 import { ListUserService } from './list-user.service';
-import { SendEmailAlertDivergence } from 'src/modules/mail/services/sendEmailAlertDivergence.service';
+// import { SendEmailAlertDivergenceService } from 'src/modules/mail/services/sendEmailAlertDivergence.service';
 import {
+  ApiBearerAuth,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
 import { User } from '../../entities/user.entity';
+import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth.guard';
 
-@ApiTags("Users")
+@ApiTags('Users')
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 @Controller('users')
 export class ListUsersController {
   constructor(
     private readonly listUserService: ListUserService,
-    private readonly email: SendEmailAlertDivergence
+    // private readonly email: SendEmailAlertDivergenceService
     ) {}
 
   @Get()
@@ -22,8 +26,6 @@ export class ListUsersController {
     type: User,
   })
   async handle() {
-    await this.email.execute(null)
     return this.listUserService.execute();
   }
-
 }

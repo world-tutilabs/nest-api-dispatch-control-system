@@ -30,7 +30,16 @@ services:
       - ${PORT_DATABASE}:5432
     restart: unless-stopped
     networks:
-     - nw_api_sce
+      - nw_api_sce
+
+  redis_sce:
+    container_name: redis_sce
+    image: redis
+    volumes:
+      - redis:/data
+    networks: 
+      - nw_api_sce
+
   mongo_sce:
    container_name: mongo_sce
    image: mongo:4.4.6
@@ -44,10 +53,12 @@ services:
      - mongodb_data_container:/data/db
      
 volumes:
- mongodb_data_container:
- postgres_data:
-networks: 
- nw_api_sce:
+  redis:
+    driver: local
+  mongodb_data_container:
+  postgres_data:
+
+networks:
+  nw_api_sce:
     driver: bridge
     name: nw_api_sce
-
