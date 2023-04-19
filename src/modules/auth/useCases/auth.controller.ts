@@ -1,10 +1,11 @@
-import { Controller, Request, Post, UseGuards } from '@nestjs/common';
+import { Controller, Request, Post, UseGuards, Get } from '@nestjs/common';
 import { LocalAuthGuard } from '../guards/local-auth.guard';
 import { AuthService } from './auth.service';
-import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('login')
-@Controller('login')
+@ApiBearerAuth()
+@Controller('')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
@@ -18,8 +19,13 @@ export class AuthController {
       },
     },
   })
-  @Post()
+  @Post('login')
   login(@Request() req) {
     return this.authService.login(req.user);
+  }
+
+  @Get('validateToken')
+  validateToken(@Request() req) {
+    return this.authService.valitadeToken(req.headers.authorization);
   }
 }
