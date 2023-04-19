@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
+import { ISendMailAlertDivergenceDTO } from '../dto/ISendMailAlertDivergenceDTO';
 
 @Injectable()
-export class SendEmailAlertDivergence {
+export class SendEmailAlertDivergenceService {
   constructor(private readonly mailService: MailerService){}
   async execute(data: ISendMailAlertDivergenceDTO) {
     await this.mailService.sendMail({

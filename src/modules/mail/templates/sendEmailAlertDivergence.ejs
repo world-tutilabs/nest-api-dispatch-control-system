@@ -88,7 +88,7 @@
             <th colspan="2" class="title-date"></th>
         </tr>
 
-        
+
         <tr class="subtitle">
             <td colspan="6">Informações Gerais</td>
         </tr>
@@ -98,14 +98,20 @@
                 <table width="100%">
                     <tr style="background-color: #EDEDED;">
                         <th>Cliente</th>
-                        <th>Descrição de Produto</th>
+                        <th>Descri                                                  ção de Produto</th>
                         <th>Nota Fiscal</th>
 
                     </tr>
                     <tr>
-                        <td>MOTO HONDA</td>
-                        <td>Tampa Traseira</td>
-                        <td>467779</td>
+                        <td>
+                            <%= inforGeneral.client %>
+                        </td>
+                        <td>
+                            <%= inforGeneral.desc_product %>
+                        </td>
+                        <td>
+                            <%= inforGeneral.invoice %>
+                        </td>
                     </tr>
                 </table>
             </td>
@@ -121,37 +127,49 @@
 
                     </tr>
                     <tr>
-                        <td>04.337.168/0001-48</td>
-                        <td>03.031231.02-30</td>
-                        <td>Luan Albuquerque</td>
+                        <td>
+                            <%= inforGeneral.cnpj %>
+                        </td>
+                        <td>
+                            <%= inforGeneral.cod_product %>
+                        </td>
+                        <td>
+                            <%= user.name %>
+                        </td>
                     </tr>
                 </table>
             </td>
         </tr>
 
-          
+
         <tr class="subtitle">
             <td colspan="6">Resumo</td>
         </tr>
 
-        <tr  class="content">
+        <tr class="content">
             <td colspan="6" class="content-internal">
                 <table width="100%">
-                
+
                     <tr style="background-color: #EDEDED;">
                         <td>Total em Nota</td>
                         <td>Total Escaneado</td>
                     </tr>
-                    <tr >
-                        <th>200</th>
-                        <th style="color: rgb(243, 74, 74);">180</th>
+                    <tr>
+                        <th>
+                            <%= summary.total_in_invoice %>
+                        </th>
+                        <th style="color: rgb(243, 74, 74);">
+                            <%= summary.total_scanned %>
+                        </th>
                     </tr>
 
                     <tr style="background-color: #EDEDED;">
                         <td colspan="2">Motivo</td>
                     </tr>
-                    <tr >
-                        <td colspan="2">Teste de bugas 123, Welcome to the jungle, Hello World</td>
+                    <tr>
+                        <td colspan="2">
+                            <%= summary.observation %>
+                        </td>
                     </tr>
 
                 </table>
@@ -172,28 +190,34 @@
                         <th>Data de Bipagem</th>
 
                     </tr>
-                    <tr>
-                        <td>tutilabs-0001</td>
-                        <td>50</td>
-                        <td>2023-04-12 13:29:00</td>
-                    </tr>
-                    <tr>
-                        <td>tutilabs-0002</td>
-                        <td>50</td>
-                        <td>2023-04-12 13:29:00</td>
-                    </tr>
-                    <tr>
-                        <td>tutilabs-0003</td>
-                        <td>30</td>
-                        <td>2023-04-12 13:29:00</td>
-                    </tr>
+
+                    <% detailing.forEach(function(detail){ %>
+
+                        <tr>
+                            <td>
+                                <%- detail.serial_number %>
+
+                            </td>
+                            <td>
+                                <%- detail.qtd_product %>
+
+                            </td>
+                            <td>
+                                <%- detail.date_scanned %>
+
+                            </td>
+                        </tr>
+
+                        <% }); %>
+
+
                 </table>
             </td>
 
 
-          
-      
-         
+
+
+
         </tr>
 
 
