@@ -16,6 +16,7 @@
     "strictBindCallApply": false,
     "strict": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "resolveJsonModule": true //TODO: remove before merge
   }
 }

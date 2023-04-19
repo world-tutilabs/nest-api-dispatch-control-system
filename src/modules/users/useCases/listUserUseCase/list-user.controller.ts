@@ -7,7 +7,7 @@ import {
 } from '@nestjs/swagger';
 import { User } from '../../entities/user.entity';
 
-@ApiTags("Users")
+@ApiTags('Users')
 @Controller('users')
 export class ListUsersController {
   constructor(
@@ -24,5 +24,4 @@ export class ListUsersController {
   async handle() {
     return this.listUserService.execute();
   }
-
 }

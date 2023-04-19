@@ -9,7 +9,17 @@ import { CreateExpeditionController } from './useCases/createExpeditionUseCase/c
 import { CreateExpeditionService } from './useCases/createExpeditionUseCase/create-expedition.service';
 
 @Module({
-  controllers: [FilterExpeditionController, ListExpeditionController, UpdateStatusAndTruckController,CreateExpeditionController],
-  providers: [ FilterExpeditionService, ListExpeditionService, UpdateStatusAndTruckService, CreateExpeditionService]
+  controllers: [
+    FilterExpeditionController,
+    ListExpeditionController,
+    UpdateStatusAndTruckController,
+    CreateExpeditionController,
+  ],
+  providers: [
+    FilterExpeditionService,
+    ListExpeditionService,
+    UpdateStatusAndTruckService,
+    CreateExpeditionService,
+  ],
 })
 export class ExpeditionModule {}
