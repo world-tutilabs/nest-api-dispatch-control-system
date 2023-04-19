@@ -3,6 +3,7 @@ import { ListExpeditionService } from './list-expedition.service';
 import { ApiOkResponse, ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Expedition } from '../../entities/expedition.entity';
 
+@UseGuards(JwtAuthGuard)
 @ApiTags('expedition')
 @Controller('expedition')
 export class ListExpeditionController {
