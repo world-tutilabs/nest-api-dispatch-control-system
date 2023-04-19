@@ -6,6 +6,6 @@ import { ListExpeditionService } from './useCases/listExpeditionUseCase/list-exp
 
 @Module({
   controllers: [FilterExpeditionController, ListExpeditionController],
-  providers: [ FilterExpeditionService, ListExpeditionService]
+  providers: [FilterExpeditionService, ListExpeditionService],
 })
 export class ExpeditionModule {}
