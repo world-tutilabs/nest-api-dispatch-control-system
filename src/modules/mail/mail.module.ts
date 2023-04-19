@@ -1,7 +1,8 @@
 import { MailerModule } from '@nestjs-modules/mailer';
 import { Module } from '@nestjs/common';
 import { EjsAdapter } from '@nestjs-modules/mailer/dist/adapters/ejs.adapter';
-import { SendEmailAlertDivergence } from './services/sendEmailAlertDivergence.service';
+import {  SendEmailAlertDivergenceService } from './services/sendEmailAlertDivergence.service';
+import { SendEmailAlertDivergenceController } from './controller/sendEmailAlertDivergence.controller';
 @Module({
     imports:[
         MailerModule.forRootAsync({
@@ -30,11 +31,14 @@ import { SendEmailAlertDivergence } from './services/sendEmailAlertDivergence.se
             }),
           }),
     ],
+    controllers:[
+      SendEmailAlertDivergenceController
+    ],
     providers:[
-        SendEmailAlertDivergence
+      SendEmailAlertDivergenceService
     ],
     exports:[
-        SendEmailAlertDivergence
+      SendEmailAlertDivergenceService
     ]
 })
 export class MailModule {}
