@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { NotasFiscaisController } from './notas-fiscais.controller';
+import { ReceiptController } from './useCases/findAllReceiptUseCase/receipt.controller';
 import { HttpModule } from '@nestjs/axios';
-import { NotasFiscaisService } from './notas-fiscais.service';
+import { ReceiptService } from './useCases/findAllReceiptUseCase/receipt.service';
 import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard } from '@nestjs/throttler';
 
@@ -12,9 +12,9 @@ import { ThrottlerGuard } from '@nestjs/throttler';
       maxRedirects: 5,
     }),
   ],
-  controllers: [NotasFiscaisController],
+  controllers: [ReceiptController],
   providers: [
-    NotasFiscaisService,
+    ReceiptService,
 
 //     {
 //       provide: APP_GUARD,
@@ -22,4 +22,4 @@ import { ThrottlerGuard } from '@nestjs/throttler';
 //     },
   ],
 })
-export class NotasFiscaisModule {}
+export class ReceiptModule {}

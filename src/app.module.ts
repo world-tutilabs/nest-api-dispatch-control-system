@@ -7,7 +7,7 @@ import { LogsModule } from './modules/logs/logs.module';
 
 import { CacheModule } from '@nestjs/cache-manager';
 import type { RedisClientOptions } from 'redis';
-import { NotasFiscaisModule } from './modules/notas-fiscais/notas-fiscais.module';
+import { ReceiptModule } from './modules/notas-fiscais/receipt.module';
 import { ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
@@ -15,7 +15,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
     IndexModule,
     ConfigModule.forRoot({ isGlobal: true }),
     HttpModule,
-    NotasFiscaisModule,
+    ReceiptModule,
     //* Redis Config
     CacheModule.register<RedisClientOptions>({
       isGlobal: true,
