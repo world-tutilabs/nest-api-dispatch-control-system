@@ -29,10 +29,10 @@ import { ThrottlerModule } from '@nestjs/throttler';
       ttl: +process.env.REDIS_TTL,
     }),
     //* Rate Limiter
-    ThrottlerModule.forRoot({
-      ttl: 60,
-      limit: 10,
-    }),
+//     ThrottlerModule.forRoot({
+//       ttl: 60,
+//       limit: 10,
+//     }),
     MongooseModule.forRoot("mongodb://185.209.179.253:27017", {
       auth:{
         username: "root",
