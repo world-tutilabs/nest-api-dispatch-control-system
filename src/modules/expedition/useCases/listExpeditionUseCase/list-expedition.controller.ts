@@ -1,8 +1,10 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, UseGuards } from '@nestjs/common';
 import { ListExpeditionService } from './list-expedition.service';
 import { ApiOkResponse, ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Expedition } from '../../entities/expedition.entity';
+import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @ApiTags('expedition')
 @Controller('expedition')
 export class ListExpeditionController {
