@@ -7,8 +7,8 @@ import { ListUserService } from './useCases/listUserUseCase/list-user.service';
 import { MailModule } from '../mail/mail.module';
 
 @Module({
-  imports:[MailModule],
+  imports: [MailModule],
   controllers: [CreateUsersController, ListUsersController],
-  providers: [CreateUserService, ListUserService]
+  providers: [CreateUserService, ListUserService],
 })
 export class UsersModule {}
