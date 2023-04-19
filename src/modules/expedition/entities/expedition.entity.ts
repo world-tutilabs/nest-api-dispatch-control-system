@@ -1,26 +1,30 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { Truck } from 'src/modules/truck/entities/truck.entity';
+import { User } from 'src/modules/users/entities/user.entity';
 
 export class Expedition {
-    @ApiProperty()
-    id: string;
-    @ApiProperty()
-    amount: number;
-    @ApiProperty()
-    fk_status: string;
-    @ApiProperty()
-    nf: string;
-    @ApiProperty()
-    barcode: string;
-    @ApiProperty()
-    fk_truck: string;
-    @ApiProperty()
-    description_product: string;
-    @ApiProperty()
-    code_product: string;
-    @ApiProperty()
-    observation: string;
-    @ApiProperty()
-    client: string;
-    @ApiProperty()
-    fk_user: string;
+  id: string;
+  amount: number;
+  nf: string;
+  barcode: string;
+  description_product: string;
+  code_product: string;
+  observation: string;
+  client: string;
+  // cart: Cart[];
+  // truck: Truck;
+  fk_user: string;
+  // status: string;
+  fk_truck: string;
+  // fk_user: string;
+  fk_status: string;
 }
+
+export type Cart = {
+  amount: number;
+  code: string;
+};
+
+export type Status = {
+  id: string;
+  description: string;
+};
