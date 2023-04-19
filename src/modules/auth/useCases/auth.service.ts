@@ -1,6 +1,6 @@
 import { UserRepository } from 'src/modules/users/repository/UserRepository';
 import { JwtService } from '@nestjs/jwt';
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { User } from 'src/modules/users/entities/user.entity';
 import * as bcrypt from 'bcrypt';
 
@@ -38,5 +38,17 @@ export class AuthService {
         secret: process.env.SECRET,
       }),
     };
+  }
+
+  async valitadeToken(data: string) {
+    if(!data){
+      throw new HttpException('Faltando token', 401)
+    }
+    const [,token] = data.split(" ")
+    try {
+      return await this.jwtService.verifyAsync(token,{publicKey: process.env.SECRET})
+    } catch (error) {
+      throw new HttpException('Token inválido', 401)
+    }
   }
 }
