@@ -1,6 +1,3 @@
-import { Truck } from 'src/modules/truck/entities/truck.entity';
-import { User } from 'src/modules/users/entities/user.entity';
-
 export class Expedition {
   id: string;
   amount: number;
@@ -14,7 +11,7 @@ export class Expedition {
   // truck: Truck;
   fk_user: string;
   // status: string;
-  fk_truck: string;
+  fk_truck?: string;
   // fk_user: string;
   fk_status: string;
 }
