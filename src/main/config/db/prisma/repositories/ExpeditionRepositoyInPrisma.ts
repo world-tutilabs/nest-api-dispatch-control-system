@@ -5,6 +5,7 @@ import { ListExpeditionDTO } from 'src/modules/expedition/dto/list-expedition.dt
 import { Injectable } from '@nestjs/common';
 import { UpdateExpeditionDto } from 'src/modules/expedition/dto/update-expedition.dto';
 import { CreateExpeditionDto } from 'src/modules/expedition/dto/create-expedition.dto';
+import { Status } from 'src/modules/expedition/enum/status.enum';
 
 @Injectable()
 export class ExpeditionRepositoryInPrisma implements ExpedtitionRepository {
@@ -18,11 +19,11 @@ export class ExpeditionRepositoryInPrisma implements ExpedtitionRepository {
       observation,
       client,
       barcode,
-      truck,
       cart,
       user,
     } = createExpeditionDto;
-    await this.prisma.expedition.create({
+
+    return await this.prisma.expedition.create({
       data: {
         amount: amount_nf,
         barcode,
@@ -31,12 +32,6 @@ export class ExpeditionRepositoryInPrisma implements ExpedtitionRepository {
         description_product,
         nf,
         observation,
-        truck: {
-          create: {
-            code: truck.code,
-            description: truck.description,
-          },
-        },
         cart: {
           createMany: {
             data: cart,
@@ -49,12 +44,11 @@ export class ExpeditionRepositoryInPrisma implements ExpedtitionRepository {
         },
         status: {
           connect: {
-            id: '1',
+            id: Status.AguardandoBau,
           },
         },
       },
     });
-    return null;
   }
   async findById(id: string): Promise<Expedition> {
     const data = await this.prisma.expedition.findUnique({

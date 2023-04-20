@@ -26,7 +26,7 @@ export class CreateExpeditionDto {
   @ValidateIf((object, value) => value != null)
   client?: string;
   cart: Cart[];
-  truck: Truck;
+  truck?: Truck;
   status: Status;
   user: any;
 }
