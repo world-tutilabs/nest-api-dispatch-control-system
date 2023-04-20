@@ -29,7 +29,7 @@ model expedition {
   fk_user             String
   cart                cart[]
   status              status  @relation(fields: [fk_status], references: [id], onDelete: Cascade)
-  truck               truck?  @relation(fields: [fk_truck], references: [id], onDelete: Cascade)
+  truck               truck?  @relation(fields: [fk_truck], references: [id])
   user                user    @relation(fields: [fk_user], references: [id], onDelete: Cascade)
 }
 

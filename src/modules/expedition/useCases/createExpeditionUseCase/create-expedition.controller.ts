@@ -12,9 +12,12 @@ export class CreateExpeditionController {
     private readonly createExpeditionService: CreateExpeditionService,
   ) {}
   @Post()
-  @ApiOperation({summary: "Criar expedição de embalagens"})
-  create(@Body() createExpeditionDto: CreateExpeditionDto, @Req() user: any) {
+  @ApiOperation({ summary: 'Criar expedição de embalagens' })
+  async create(
+    @Body() createExpeditionDto: CreateExpeditionDto,
+    @Req() user: any,
+  ) {
     const newData = Object.assign({}, createExpeditionDto, { user: user.user });
-    this.createExpeditionService.execute(newData);
+    return await this.createExpeditionService.execute(newData);
   }
 }

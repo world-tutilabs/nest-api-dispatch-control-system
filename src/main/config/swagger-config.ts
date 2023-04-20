@@ -8,6 +8,7 @@ const swaggerConfig = new DocumentBuilder()
   .setContact('Tutilabs', '', 'tutilabs@tutiplast.com.br')
   .setVersion('1.0')
   .addServer(`http://localhost:${process.env.API_PORT}`)
+  .addServer(`http://185.209.179.253:${process.env.API_PORT}`)
   .addBearerAuth()
   .build();
 

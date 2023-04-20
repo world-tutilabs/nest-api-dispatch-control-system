@@ -1,22 +1,22 @@
 import { ApiProperty } from "@nestjs/swagger";
 
 export class ISendMailAlertDivergenceDTO {
-  @ApiProperty({
-    type: 'object',
-    properties: {
-      name: {
-        type: "string"
-      },
-      registration: {
-        type: "string"
-      },
-    }
-  })
-  @ApiProperty()
-  user: {
-    name: string,
-    registration: string
-  }
+  // @ApiProperty({
+  //   type: 'object',
+  //   properties: {
+  //     name: {
+  //       type: "string"
+  //     },
+  //     registration: {
+  //       type: "string"
+  //     },
+  //   }
+  // })
+  // @ApiProperty()
+  // user: {
+  //   name: string,
+  //   registration: string
+  // }
 
   @ApiProperty({
     type: 'object',
@@ -27,13 +27,7 @@ export class ISendMailAlertDivergenceDTO {
       desc_product: {
         type: "string"
       },
-      registration: {
-        type: "string"
-      },
       invoice: {
-        type: "string"
-      },
-      cnpj: {
         type: "string"
       },
       cod_product: {
@@ -45,7 +39,6 @@ export class ISendMailAlertDivergenceDTO {
     client: string,
     desc_product: string,
     invoice: string,
-    cnpj: string,
     cod_product: string,
   }
 

@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Req } from '@nestjs/common';
 
 import {
   ApiBearerAuth,
@@ -23,8 +23,8 @@ export class SendEmailAlertDivergenceController {
     description: "Envio de email ao encontrar divergencias.",
     type: ISendMailAlertDivergenceDTO
   })
-  async handle(@Body() sendMailAlertDivergenceDTO: ISendMailAlertDivergenceDTO) {
-    return await this.sendEmailAlertDivergenceService.execute(sendMailAlertDivergenceDTO);
+  async handle(@Body() sendMailAlertDivergenceDTO: ISendMailAlertDivergenceDTO, @Req() user: any) {
+    return await this.sendEmailAlertDivergenceService.execute(sendMailAlertDivergenceDTO , user.user);
   }
 
 }
