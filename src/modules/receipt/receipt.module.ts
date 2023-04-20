@@ -16,10 +16,10 @@ import { ThrottlerGuard } from '@nestjs/throttler';
   providers: [
     ReceiptService,
 
-//     {
-//       provide: APP_GUARD,
-//       useClass: ThrottlerGuard,
-//     },
+    //     {
+    //       provide: APP_GUARD,
+    //       useClass: ThrottlerGuard,
+    //     },
   ],
 })
 export class ReceiptModule {}

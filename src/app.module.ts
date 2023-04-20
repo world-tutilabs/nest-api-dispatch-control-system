@@ -7,8 +7,8 @@ import { LogsModule } from './modules/logs/logs.module';
 
 import { CacheModule } from '@nestjs/cache-manager';
 import type { RedisClientOptions } from 'redis';
-import { ReceiptModule } from './modules/notas-fiscais/receipt.module';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { ReceiptModule } from './modules/receipt/receipt.module';
 
 @Module({
   imports: [
@@ -29,18 +29,18 @@ import { ThrottlerModule } from '@nestjs/throttler';
       ttl: +process.env.REDIS_TTL,
     }),
     //* Rate Limiter
-//     ThrottlerModule.forRoot({
-//       ttl: 60,
-//       limit: 10,
-//     }),
-    MongooseModule.forRoot("mongodb://185.209.179.253:27017", {
-      auth:{
-        username: "root",
-        password: "teste"
+    //     ThrottlerModule.forRoot({
+    //       ttl: 60,
+    //       limit: 10,
+    //     }),
+    MongooseModule.forRoot('mongodb://185.209.179.253:27017', {
+      auth: {
+        username: 'root',
+        password: 'teste',
       },
-      dbName: "logs_sce"
+      dbName: 'logs_sce',
     }),
-    LogsModule
+    LogsModule,
   ],
   controllers: [],
   providers: [],

@@ -6,9 +6,9 @@ import { CacheInterceptor, CacheKey } from '@nestjs/cache-manager';
 import { JwtAuthGuard } from '../../../auth/guards/jwt-auth.guard';
 
 @ApiBearerAuth()
-@Controller('notas-fiscais')
+@Controller('receipt')
 @UseGuards(JwtAuthGuard)
-@ApiTags('Notas Fiscais')
+@ApiTags('Receipt')
 export class ReceiptController {
   constructor(private readonly receiptService: ReceiptService) {}
 
