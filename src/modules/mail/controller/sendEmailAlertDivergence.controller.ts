@@ -24,7 +24,7 @@ export class SendEmailAlertDivergenceController {
     type: ISendMailAlertDivergenceDTO
   })
   async handle(@Body() sendMailAlertDivergenceDTO: ISendMailAlertDivergenceDTO, @Req() user: any) {
-    return await this.sendEmailAlertDivergenceService.execute(sendMailAlertDivergenceDTO , user);
+    return await this.sendEmailAlertDivergenceService.execute(sendMailAlertDivergenceDTO , user.user);
   }
 
 }
