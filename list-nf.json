@@ -36,7 +36,7 @@
         "code_client": "C00231",
         "providers_name": "YAMAHA",
         "amount_nf": "200",
-        "itens": [
+        "items": [
             {
                 "code_product": "1231223",
                 "description_product": "TESTE",
