@@ -7,30 +7,38 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model cart {
-  id            String     @id @default(uuid())
-  amount        Int
-  code          String
-  fk_expedition String
-  expedition    expedition @relation(fields: [fk_expedition], references: [id], onDelete: Cascade)
+model expedition {
+  id          String  @id @default(uuid())
+  amount      Int?
+  nf          String?
+  observation String?
+  client      String?
+  fk_status   String
+  fk_truck    String?
+  fk_user     String
+  status      status  @relation(fields: [fk_status], references: [id], onDelete: Cascade)
+  truck       truck?  @relation(fields: [fk_truck], references: [id])
+  user        user    @relation(fields: [fk_user], references: [id], onDelete: Cascade)
+  items       items[]
 }
 
-model expedition {
-  id                  String  @id @default(uuid())
-  amount              Int?
-  nf                  String?
-  barcode             String?
+model cart {
+  id       String @id @default(uuid())
+  amount   Int
+  code     String
+  id_items String
+  items    items  @relation(fields: [id_items], references: [id], onDelete: Cascade)
+}
+
+model items {
+  id                  String     @id @default(uuid())
   description_product String?
   code_product        String?
-  observation         String?
-  client              String?
-  fk_status           String
-  fk_truck            String?
-  fk_user             String
+  barcode             String?
+  id_expedition       String
+  amount              Int?
   cart                cart[]
-  status              status  @relation(fields: [fk_status], references: [id], onDelete: Cascade)
-  truck               truck?  @relation(fields: [fk_truck], references: [id])
-  user                user    @relation(fields: [fk_user], references: [id], onDelete: Cascade)
+  expedition          expedition @relation(fields: [id_expedition], references: [id], onDelete: Cascade)
 }
 
 model role {
@@ -48,7 +56,7 @@ model status {
 model truck {
   id          String       @id @default(uuid())
   description String       @db.VarChar
-  code        String       @db.VarChar @unique()
+  code        String       @unique @db.VarChar
   expedition  expedition[]
 }
 

@@ -2,24 +2,27 @@ export class Expedition {
   id: string;
   amount: number;
   nf: string;
-  barcode: string;
-  description_product: string;
-  code_product: string;
   observation: string;
   client: string;
-  // cart: Cart[];
-  // truck: Truck;
   fk_user: string;
-  // status: string;
   fk_truck?: string;
-  // fk_user: string;
   fk_status: string;
 }
 
-export type Cart = {
+export class Items {
+  id: string;
+  barcode: string;
+  description_product: string;
+  code_product: string;
+  fk_expedition: string;
+  amount: number;
+}
+
+export class Cart {
   amount: number;
   code: string;
-};
+  fk_items: string;
+}
 
 export type Status = {
   id: string;
