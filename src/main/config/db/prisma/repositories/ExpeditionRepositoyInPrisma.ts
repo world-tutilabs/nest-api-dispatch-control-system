@@ -23,32 +23,7 @@ export class ExpeditionRepositoryInPrisma implements ExpedtitionRepository {
       user,
     } = createExpeditionDto;
 
-    return await this.prisma.expedition.create({
-      data: {
-        amount: amount_nf,
-        barcode,
-        code_product,
-        client,
-        description_product,
-        nf,
-        observation,
-        cart: {
-          createMany: {
-            data: cart,
-          },
-        },
-        user: {
-          connect: {
-            id: user.id,
-          },
-        },
-        status: {
-          connect: {
-            id: Status.AguardandoBau,
-          },
-        },
-      },
-    });
+    throw new Error("Method not implemented")
   }
   async findById(id: string): Promise<Expedition> {
     const data = await this.prisma.expedition.findUnique({
@@ -98,13 +73,15 @@ export class ExpeditionRepositoryInPrisma implements ExpedtitionRepository {
               : undefined,
           },
           {
-            description_product: description_product
-              ? {
-                  mode: 'insensitive',
+            items: {
+              some: {
+                description_product: description_product ? {
                   contains: description_product,
-                }
-              : undefined,
-          },
+                  mode: 'insensitive'
+                } : undefined
+              }
+            }
+          }
         ],
       },
       skip: offset,
