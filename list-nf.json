@@ -1,68 +1,66 @@
 [
     {
-        "nf": "569070", 
-        "code_client": "C00231", 
+        "nf": "569070",
+        "code_client": "C00231",
         "providers_name": "TEC TOY S.A",
         "amount_nf": "400",
-        "itens" : [
+        "itens": [
             {
-                "code_product": "1231223",  
-                "description_product": "COPO",
-                "amount": "200",  
-                "barcode": "100000091920"
+                "code_product": "02.001.001000.01-006",
+                "description_product": "COPO BRANCO 30 ANOS TUTIPLAST",
+                "amount": "200",
+                "barcode": "1000000919219"
             },
             {
-                "code_product": "02.###.###.######.##-##",  
+                "code_product": "02.###.###.######.##-##",
                 "description_product": "VISOR DIREITO",
-                "amount": "200",  
+                "amount": "200",
                 "barcode": "100000091921"
             },
             {
-                "code_product": "03.###.###.######.##-##",  
+                "code_product": "03.###.###.######.##-##",
                 "description_product": "VISOR ESQUERDO",
-                "amount": "100",  
+                "amount": "100",
                 "barcode": "100000091922"
             },
             {
-                "code_product": "03.###.###.######.##-##",  
+                "code_product": "03.###.###.######.##-##",
                 "description_product": "VISOR ESQUERDO",
-                "amount": "100",  
+                "amount": "100",
                 "barcode": "100000091922"
             }
-
         ]
     },
     {
-        "nf": "125454", 
-        "code_client": "C00231", 
+        "nf": "125454",
+        "code_client": "C00231",
         "providers_name": "YAMAHA",
         "amount_nf": "200",
-        "itens" : [
+        "itens": [
             {
-                "code_product": "1231223",  
+                "code_product": "1231223",
                 "description_product": "TESTE",
-                "amount": "200",  
+                "amount": "200",
                 "barcode": "100000091920"
             },
             {
-                "code_product": "oioi",  
+                "code_product": "oioi",
                 "description_product": "TESTE",
-                "amount": "200",  
+                "amount": "200",
                 "barcode": "100000091921"
             },
             {
-                "code_product": "03.###.###.######.##-##",  
+                "code_product": "03.###.###.######.##-##",
                 "description_product": "TESTE",
-                "amount": "100",  
+                "amount": "100",
                 "barcode": "100000091922"
             },
             {
-                "code_product": "03.###.###.######.##-##",  
+                "code_product": "03.###.###.######.##-##",
                 "description_product": "TESTE",
-                "amount": "100",  
+                "amount": "100",
                 "barcode": "100000091922"
             }
-
         ]
     }
 ]
