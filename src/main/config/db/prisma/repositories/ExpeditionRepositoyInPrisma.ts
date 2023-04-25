@@ -10,13 +10,6 @@ import { Status } from 'src/modules/expedition/enum/status.enum';
 @Injectable()
 export class ExpeditionRepositoryInPrisma implements ExpedtitionRepository {
   constructor(private prisma: PrismaService) {}
-  filter(
-    listExpeditionDTO: ListExpeditionDTO,
-    limit: number,
-    offset: number,
-  ): Promise<Expedition[]> {
-    throw new Error('Method not implemented.');
-  }
   async create(createExpeditionDto: CreateExpeditionDto): Promise<void> {
     const { amount_nf, nf, observation, client, user, items } =
       createExpeditionDto;
@@ -93,45 +86,49 @@ export class ExpeditionRepositoryInPrisma implements ExpedtitionRepository {
     });
   }
 
-  // async filter(
-  //   { client, nf, description_product }: ListExpeditionDTO,
-  //   limit: number,
-  //   offset: number,
-  // ): Promise<Expedition[]> {
-  //   const data = await this.prisma.expedition.findMany({
-  //     where: {
-  //       OR: [
-  //         {
-  //           client: client
-  //             ? {
-  //                 mode: 'insensitive',
-  //                 contains: client,
-  //               }
-  //             : undefined,
-  //         },
-  //         {
-  //           nf: nf
-  //             ? {
-  //                 mode: 'insensitive',
-  //                 contains: nf,
-  //               }
-  //             : undefined,
-  //         },
-  //         {
-  //           description_product: description_product
-  //             ? {
-  //                 mode: 'insensitive',
-  //                 contains: description_product,
-  //               }
-  //             : undefined,
-  //         },
-  //       ],
-  //     },
-  //     skip: offset,
-  //     take: limit,
-  //   });
-  //   return data;
-  // }
+  async filter(
+    { client, nf, description_product }: ListExpeditionDTO,
+    limit: number,
+    offset: number,
+  ): Promise<Expedition[]> {
+    const data = await this.prisma.expedition.findMany({
+      where: {
+        OR: [
+          {
+            client: client
+              ? {
+                  mode: 'insensitive',
+                  contains: client,
+                }
+              : undefined,
+          },
+          {
+            nf: nf
+              ? {
+                  mode: 'insensitive',
+                  contains: nf,
+                }
+              : undefined,
+          },
+          {
+            items: {
+              some: {
+                description_product: description_product
+                  ? {
+                      contains: description_product,
+                      mode: 'insensitive',
+                    }
+                  : undefined,
+              },
+            },
+          },
+        ],
+      },
+      skip: offset,
+      take: limit,
+    });
+    return data;
+  }
 
   async list(limit: number, offset: number): Promise<Expedition[]> {
     const data = await this.prisma.expedition.findMany({
