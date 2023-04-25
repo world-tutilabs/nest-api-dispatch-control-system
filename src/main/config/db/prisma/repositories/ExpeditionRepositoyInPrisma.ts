@@ -10,45 +10,65 @@ import { Status } from 'src/modules/expedition/enum/status.enum';
 @Injectable()
 export class ExpeditionRepositoryInPrisma implements ExpedtitionRepository {
   constructor(private prisma: PrismaService) {}
-  async create(createExpeditionDto: CreateExpeditionDto): Promise<Expedition> {
-    const {
-      code_product,
-      description_product,
-      amount_nf,
-      nf,
-      observation,
-      client,
-      barcode,
-      cart,
-      user,
-    } = createExpeditionDto;
-
-    return await this.prisma.expedition.create({
-      data: {
-        amount: amount_nf,
-        barcode,
-        code_product,
-        client,
-        description_product,
-        nf,
-        observation,
-        cart: {
-          createMany: {
-            data: cart,
+  filter(
+    listExpeditionDTO: ListExpeditionDTO,
+    limit: number,
+    offset: number,
+  ): Promise<Expedition[]> {
+    throw new Error('Method not implemented.');
+  }
+  async create(createExpeditionDto: CreateExpeditionDto): Promise<void> {
+    const { amount_nf, nf, observation, client, user, items } =
+      createExpeditionDto;
+    await this.prisma.expedition
+      .create({
+        data: {
+          amount: amount_nf,
+          client,
+          nf,
+          observation,
+          user: {
+            connect: {
+              id: user.id,
+            },
+          },
+          status: {
+            connect: {
+              id: Status.AguardandoBau,
+            },
           },
         },
-        user: {
-          connect: {
-            id: user.id,
-          },
-        },
-        status: {
-          connect: {
-            id: Status.AguardandoBau,
-          },
-        },
-      },
-    });
+      })
+      .then(async (data) => {
+        await Promise.all(
+          items.map(async (item: any) => {
+            return await this.prisma.items
+              .create({
+                data: {
+                  amount: item.amount,
+                  amount_monoblock: item.amount_monoblock,
+                  barcode: item.barcode,
+                  code_product: item.code_product,
+                  description_product: item.description_product,
+                  id_expedition: data.id,
+                },
+              })
+              .then(async (data) => {
+                return await Promise.all(
+                  item.cart.map(async (cart: any) => {
+                    await this.prisma.cart.create({
+                      data: {
+                        amount: cart.amount,
+                        code: cart.code,
+                        id_items: data.id,
+                      },
+                    });
+                  }),
+                );
+              });
+          }),
+        );
+      });
   }
   async findById(id: string): Promise<Expedition> {
     const data = await this.prisma.expedition.findUnique({
@@ -73,45 +93,45 @@ export class ExpeditionRepositoryInPrisma implements ExpedtitionRepository {
     });
   }
 
-  async filter(
-    { client, nf, description_product }: ListExpeditionDTO,
-    limit: number,
-    offset: number,
-  ): Promise<Expedition[]> {
-    const data = await this.prisma.expedition.findMany({
-      where: {
-        OR: [
-          {
-            client: client
-              ? {
-                  mode: 'insensitive',
-                  contains: client,
-                }
-              : undefined,
-          },
-          {
-            nf: nf
-              ? {
-                  mode: 'insensitive',
-                  contains: nf,
-                }
-              : undefined,
-          },
-          {
-            description_product: description_product
-              ? {
-                  mode: 'insensitive',
-                  contains: description_product,
-                }
-              : undefined,
-          },
-        ],
-      },
-      skip: offset,
-      take: limit,
-    });
-    return data;
-  }
+  // async filter(
+  //   { client, nf, description_product }: ListExpeditionDTO,
+  //   limit: number,
+  //   offset: number,
+  // ): Promise<Expedition[]> {
+  //   const data = await this.prisma.expedition.findMany({
+  //     where: {
+  //       OR: [
+  //         {
+  //           client: client
+  //             ? {
+  //                 mode: 'insensitive',
+  //                 contains: client,
+  //               }
+  //             : undefined,
+  //         },
+  //         {
+  //           nf: nf
+  //             ? {
+  //                 mode: 'insensitive',
+  //                 contains: nf,
+  //               }
+  //             : undefined,
+  //         },
+  //         {
+  //           description_product: description_product
+  //             ? {
+  //                 mode: 'insensitive',
+  //                 contains: description_product,
+  //               }
+  //             : undefined,
+  //         },
+  //       ],
+  //     },
+  //     skip: offset,
+  //     take: limit,
+  //   });
+  //   return data;
+  // }
 
   async list(limit: number, offset: number): Promise<Expedition[]> {
     const data = await this.prisma.expedition.findMany({

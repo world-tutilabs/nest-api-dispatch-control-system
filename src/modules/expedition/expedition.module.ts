@@ -10,15 +10,15 @@ import { CreateExpeditionService } from './useCases/createExpeditionUseCase/crea
 
 @Module({
   controllers: [
-    FilterExpeditionController,
-    ListExpeditionController,
-    UpdateStatusAndTruckController,
+    // FilterExpeditionController,
+    // ListExpeditionController,
+    // UpdateStatusAndTruckController,
     CreateExpeditionController,
   ],
   providers: [
-    FilterExpeditionService,
-    ListExpeditionService,
-    UpdateStatusAndTruckService,
+    // FilterExpeditionService,
+    // ListExpeditionService,
+    // UpdateStatusAndTruckService,
     CreateExpeditionService,
   ],
 })

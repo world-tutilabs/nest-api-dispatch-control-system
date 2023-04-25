@@ -16,6 +16,7 @@ export class Items {
   code_product: string;
   fk_expedition: string;
   amount: number;
+  amount_monoblock: number;
 }
 
 export class Cart {

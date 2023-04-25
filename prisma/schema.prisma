@@ -37,6 +37,7 @@ model items {
   barcode             String?
   id_expedition       String
   amount              Int?
+  amount_monoblock    Int?
   cart                cart[]
   expedition          expedition @relation(fields: [id_expedition], references: [id], onDelete: Cascade)
 }

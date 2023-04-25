@@ -15,7 +15,5 @@ export abstract class ExpedtitionRepository {
     id: string,
     updateExpeditionDto: UpdateExpeditionDto,
   ): Promise<void>;
-  abstract create(
-    CreateExpeditionDto: CreateExpeditionDto,
-  ): Promise<Expedition>;
+  abstract create(CreateExpeditionDto: CreateExpeditionDto): Promise<void>;
 }
