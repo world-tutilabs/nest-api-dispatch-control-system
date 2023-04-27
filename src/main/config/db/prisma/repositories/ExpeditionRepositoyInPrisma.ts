@@ -51,7 +51,7 @@ export class ExpeditionRepositoryInPrisma implements ExpedtitionRepository {
                   item.cart.map(async (cart: any) => {
                     await this.prisma.cart.create({
                       data: {
-                        amount: cart.amount,
+                        amount: cart.amount_product,
                         code: cart.code,
                         id_items: data.id,
                       },
