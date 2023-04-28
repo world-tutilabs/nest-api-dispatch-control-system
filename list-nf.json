@@ -1,37 +1,30 @@
 [
     {
-        "nf": "569070",
+        "nf": "571587",
         "code_client": "C00231",
-        "providers_name": "TEC TOY S.A",
-        "amount_nf": "400",
+        "providers_name": "HONDA",
+        "amount_nf": "1000",
         "items": [
             {
-                "item": "7720AKRE G003",
+                "item": "64225K2G B202",
                 "code_product": "02.001.001000.01-006",
-                "description_product": "COPO BRANCO 30 ANOS TUTIPLAST",
-                "amount": "200",
+                "description_product": "carenagem int. Dir. fan",
+                "amount": "400",
+                "barcode": "1000000615418"
+            },
+            {
+                "item": "64325K2G B202",
+                "code_product": "02.001.001000.01-006",
+                "description_product": "carenagem int. Esq. fan",
+                "amount": "400",
                 "barcode": "1000000919219"
             },
             {
-                "item": "7720AKRE G003",
-                "code_product": "02.001.001000.01-006",
-                "description_product": "COPO BRANCO 30 ANOS TUTIPLAST",
+                "item": "P61301K2G B201",
+                "code_product": "03.###.###.######.##-##",
+                "description_product": "Visor Central fan",
                 "amount": "200",
-                "barcode": "1000000919219"
-            },
-            {
-                "item": "7720AKRE G005",
-                "code_product": "03.###.###.######.##-##",
-                "description_product": "VISOR ESQUERDO",
-                "amount": "100",
-                "barcode": "100000091922"
-            },
-            {
-                "item": "7720AKRE G006",
-                "code_product": "03.###.###.######.##-##",
-                "description_product": "VISOR ESQUERDO",
-                "amount": "100",
-                "barcode": "100000091922"
+                "barcode": "1000000619713"
             }
         ]
     },
