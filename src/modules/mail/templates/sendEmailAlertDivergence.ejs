@@ -98,8 +98,8 @@
                 <table width="100%">
                     <tr style="background-color: #EDEDED;">
                         <th>Cliente</th>
-                        <th>Descrição de Produto</th>
                         <th>Nota Fiscal</th>
+                        <th>Usuario</th>
 
                     </tr>
                     <tr>
@@ -107,35 +107,30 @@
                             <%= inforGeneral.client %>
                         </td>
                         <td>
-                            <%= inforGeneral.desc_product %>
-                        </td>
-                        <td>
                             <%= inforGeneral.invoice %>
                         </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-
-        <tr class="content">
-            <td colspan="6" class="content-internal">
-                <table width="100%">
-                    <tr style="background-color: #EDEDED;">
-                        <th colspan="3">Cod.Produto</th>
-                        <th colspan="3">Usuario</th>
-
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <%= inforGeneral.cod_product %>
-                        </td>
-                        <td colspan="3">
+                        <td >
                             <%= user.name %>
                         </td>
                     </tr>
                 </table>
             </td>
         </tr>
+
+        <!-- <tr class="content">
+            <td colspan="6" class="content-internal">
+                <table width="100%">
+                    <tr style="background-color: #EDEDED;">
+                        <th colspan="3">Usuario</th>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <%= user.name %>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr> -->
 
 
         <tr class="subtitle">
@@ -181,9 +176,11 @@
             <td colspan="6" class="content-internal">
                 <table width="100%">
                     <tr style="background-color: #EDEDED;">
-                        <th>Carrinho ( serial_number )</th>
-                        <th>Quantidade de produtos</th>
+                        <th>Cod.Produto</th>
+                        <th>Descrição do Produto</th>
+                        <th>Quantidade em monobloco</th>
                         <th>Data de Bipagem</th>
+                        <th>Carrinhos</th>
 
                     </tr>
 
@@ -191,17 +188,50 @@
 
                         <tr>
                             <td>
-                                <%- detail.serial_number %>
+                                <%- detail.code_product %>
 
                             </td>
                             <td>
-                                <%- detail.qtd_product %>
+                                <%- detail.description_product %>
+
+                            </td>
+                            <td>
+                                <%- detail.amount_monoblock %>
 
                             </td>
                             <td>
                                 <%- detail.date_scanned %>
 
                             </td>
+
+                            
+                            <td>
+                                <table>
+                                    <tr>
+                                        <th>Carrinho ( serial_number )</th>
+                                        <th>Quantidade de produtos em carrinho</th>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <% detail.cart_info.forEach(function(cart){ %>
+                                                    <%-cart.code %>  
+                                                    <br>
+                                            <% }); %>
+                                        </td>
+                                        <td>
+
+                                            <% detail.cart_info.forEach(function(cart){ %>
+                                                    <%- cart.amount_product %>
+                                                    <br>
+                                            <% }); %>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </td>
+
+                            
                         </tr>
 
                         <% }); %>
