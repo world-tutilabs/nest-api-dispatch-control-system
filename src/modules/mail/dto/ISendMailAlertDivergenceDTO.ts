@@ -37,9 +37,7 @@ export class ISendMailAlertDivergenceDTO {
   })
   inforGeneral: {
     client: string,
-    desc_product: string,
     invoice: string,
-    cod_product: string,
   }
 
   @ApiProperty({
@@ -79,8 +77,13 @@ export class ISendMailAlertDivergenceDTO {
     }
   })
   detailing: {
-    serial_number: string,
-    qtd_product: number,
+    code_product: string,
+    description_product: string,
+    cart_info: [{
+      code: string,
+      amount_product: number,
+    }],
+    amount_monoblock: number,
     date_scanned: Date,
   }[]
 
