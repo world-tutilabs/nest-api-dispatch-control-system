@@ -7,7 +7,7 @@ export class SendEmailAlertDivergenceService {
   constructor(private readonly mailService: MailerService) { }
   async execute(data: ISendMailAlertDivergenceDTO, user: any) {
     await this.mailService.sendMail({
-      to: "luan.santos@tutiplast.com.br",
+      to: "tutilabs@tutiplast.com.br",
       // from: 'No reply this email please' + process.env.EMAIL_MAIL,
       subject: "SCE - Sistema de Controle da Expedição",
       text: 'Alerta de divergencia entre quantidade de atual e quantidade desejada em nota fiscal',
